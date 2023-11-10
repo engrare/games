@@ -1,5 +1,8 @@
 var games_names = ["Worded", "sada", "sad", "asda"];
 
+var ismenuopen = false;
+var is_mobile_phone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) ? true : false;
+
 fetch('https://raw.githubusercontent.com/eylulberil/encoded_key/main/keys.json')
   .then(response => response.json())
   .then(myObj => {
@@ -27,8 +30,7 @@ $( document ).ready(function() {
 });
 
 
-var ismenuopen = false;
-	var is_mobile_phone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) ? true : false;
+
 	function goMainPage() {
 		var url = window.location.href;
 		var result = url.indexOf(".com") + 4;
@@ -53,7 +55,7 @@ var ismenuopen = false;
 		$("html body").css("overflow-y", "auto");
 		if(!is_mobile_phone) {
 			$(".main_div").css("width", "100%");
-			$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) - 14);
+			$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) - (window.innerWidth - document.documentElement.clientWidth));
 		}
 		//console.log(is_mobile_phone);
 	}
@@ -68,8 +70,8 @@ var ismenuopen = false;
 		
 		$("html body").css("overflow-y", "hidden");
 		if(!is_mobile_phone) {
-			$(".main_div").css("width", "calc(100% - 14px)");
-			$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) + 14.5);
+			$(".main_div").css("width", "calc(100% - " + (window.innerWidth - document.documentElement.clientWidth) + "px)");
+			$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) + (window.innerWidth - document.documentElement.clientWidth));
 		}
 	}
 	//fa-regular fa-solid fa-xmark
