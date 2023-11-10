@@ -678,12 +678,16 @@ p {
 
 .main_container {
 	display: flex;
-	    align-items: center;
+	align-items: center;
     justify-content: center;
 }
 
 .main_container_outer {
-	display: flex;
+    display: flex;
+    width: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 
@@ -700,6 +704,7 @@ p {
 	z-index: 0;
 	cursor: pointer;
 	margin: 20px;
+	overflow: hidden;
 }
 
 .main_menu_content_outer:hover {
